@@ -28,7 +28,7 @@ public class CreateAccountPage {
     private WebElement yearsDropDown;
     @FindBy(id = "newsletter")
     private WebElement newsletterCheckbox;
-    @FindBy(id = "option")
+    @FindBy(id = "optin")
     private WebElement specialOffersCheckbox;
     @FindBy(id = "submitAccount")
     private WebElement submitButton;
@@ -58,12 +58,8 @@ public class CreateAccountPage {
         daysDropDown.sendKeys(String.valueOf(formData.getDays()));
         monthsDropDown.sendKeys(formData.getMonths().name());
         yearsDropDown.sendKeys(String.valueOf(formData.getYears()));
-        if (formData.isNewsletter()) {
-            newsletterCheckbox.click();
-        }
-        if (formData.isSpecialOffers()) {
-            specialOffersCheckbox.click();
-        }
+        setCheckbox(newsletterCheckbox, formData.isNewsletter());
+        setCheckbox(specialOffersCheckbox, formData.isSpecialOffers());
     }
 
     public void submit() {
@@ -73,5 +69,13 @@ public class CreateAccountPage {
     private void setInput(WebElement input, String value) {
         input.clear();
         input.sendKeys(value);
+    }
+
+    private void setCheckbox(WebElement checkbox, boolean checked) {
+        final boolean currentCheckedState = checkbox.isSelected();
+
+        if (currentCheckedState != checked) {
+            checkbox.click();
+        }
     }
 }
