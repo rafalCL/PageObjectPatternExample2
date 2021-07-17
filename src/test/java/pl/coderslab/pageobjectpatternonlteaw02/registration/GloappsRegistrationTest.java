@@ -53,6 +53,6 @@ public class GloappsRegistrationTest {
 
     @After
     public void afterEach() {
-//        driver.close();
+        driver.close();
     }
 }
