@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreateAccountPage {
+public class GloappsCreateAccountPage {
     @FindBy(id = "account-creation_form")
     private WebElement personalInformationForm;
     @FindBy(id = "id_gender1")
@@ -33,7 +33,7 @@ public class CreateAccountPage {
     @FindBy(id = "submitAccount")
     private WebElement submitButton;
 
-    public CreateAccountPage(WebDriver driver) {
+    public GloappsCreateAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 

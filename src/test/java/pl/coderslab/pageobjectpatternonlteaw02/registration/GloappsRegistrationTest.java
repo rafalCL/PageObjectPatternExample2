@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class GloappsRegistrationTest {
     private WebDriver driver;
     private GloappsAuthenticationPage authenticationPage;
-    private CreateAccountPage createAccountPage;
+    private GloappsCreateAccountPage createAccountPage;
     private GloappsMyAccountPage myAccountPage;
 
     @Test
@@ -47,7 +47,7 @@ public class GloappsRegistrationTest {
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         driver.get("https://qloapps.coderslab.pl/en/login?back=my-account");
         authenticationPage = new GloappsAuthenticationPage(driver);
-        createAccountPage = new CreateAccountPage(driver);
+        createAccountPage = new GloappsCreateAccountPage(driver);
         myAccountPage = new GloappsMyAccountPage(driver);
     }
 
