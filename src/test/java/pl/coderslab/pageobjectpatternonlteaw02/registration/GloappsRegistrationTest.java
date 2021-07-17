@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Month;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -20,8 +21,8 @@ public class GloappsRegistrationTest {
     @Test
     public void shouldRegisterUser() {
         // go to registration form
-        final String newEmail = "ola3@makota.pl";
-        authenticationPage.fillEmailForCreateAccount(newEmail);
+        final String randomEmail = UUID.randomUUID()+"@mail.pl";
+        authenticationPage.fillEmailForCreateAccount(randomEmail);
         authenticationPage.submitCreateAccount();
         assertTrue(createAccountPage.isPersonalInformationFormDisplayed());
 //        assertTrue(createAccountPage.isEmailPopulatedWith(newEmail));
@@ -54,6 +55,6 @@ public class GloappsRegistrationTest {
 
     @After
     public void afterEach() {
-        driver.close();
+//        driver.close();
     }
 }
