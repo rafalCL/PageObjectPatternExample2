@@ -41,10 +41,10 @@ public class CreateAccountPage {
         return personalInformationForm.isDisplayed();
     }
 
-//    public boolean isEmailPopulatedWith(String expected) {
-//        String actual = emailInput.getText();
-//        return actual.equals(expected);
-//    }
+    public boolean isEmailPopulatedWith(String expected) {
+        final String actual = emailInput.getAttribute("value");
+        return actual.equals(expected);
+    }
 
     public void fillPersonalInformation(PersonalInformationFormData formData) {
         if (formData.isMr()) {

@@ -20,12 +20,11 @@ public class GloappsRegistrationTest {
 
     @Test
     public void shouldRegisterUser() {
-        // go to registration form
         final String randomEmail = UUID.randomUUID()+"@mail.pl";
         authenticationPage.fillEmailForCreateAccount(randomEmail);
         authenticationPage.submitCreateAccount();
         assertTrue(createAccountPage.isPersonalInformationFormDisplayed());
-//        assertTrue(createAccountPage.isEmailPopulatedWith(newEmail));
+        assertTrue(createAccountPage.isEmailPopulatedWith(randomEmail));
         PersonalInformationFormData formData = new PersonalInformationFormData()
                 .setMr(true)
                 .setFirstName("ala")
@@ -39,7 +38,6 @@ public class GloappsRegistrationTest {
         createAccountPage.fillPersonalInformation(formData);
         createAccountPage.submit();
         assertTrue(myAccountPage.isRegistrationSuccess());
-        // assert account created
     }
 
     @Before
