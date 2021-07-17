@@ -6,15 +6,21 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertTrue;
+
 public class GloappsRegistrationTest {
     private WebDriver driver;
-    private GloappsRegistrationPage registrationPage;
+    private GloappsAuthenticationPage authenticationPage;
+    private CreateAccountPage createAccountPage;
 
     @Test
     public void shouldRegisterUser() {
         // go to registration form
-        registrationPage.fillForm("ola@makota.pl");
-        // submit
+        authenticationPage.fillEmailForCreateAccount("ola2@makota.pl");
+        authenticationPage.submitCreateAccount();
+        assertTrue(createAccountPage.isPersonalInformationFormDisplayed());
         // assert account created
     }
 
@@ -22,12 +28,14 @@ public class GloappsRegistrationTest {
     public void beforeEach() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         driver.get("https://qloapps.coderslab.pl/en/login?back=my-account");
-        registrationPage = new GloappsRegistrationPage(driver);
+        authenticationPage = new GloappsAuthenticationPage(driver);
+        createAccountPage = new CreateAccountPage(driver);
     }
 
     @After
     public void afterEach() {
-        driver.close();
+//        driver.close();
     }
 }
