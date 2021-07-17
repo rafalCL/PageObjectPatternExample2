@@ -13,7 +13,7 @@ public class GloappsRegistrationTest {
     @Test
     public void shouldRegisterUser() {
         // go to registration form
-        registrationPage.fillForm();
+        registrationPage.fillForm("ola@makota.pl");
         // submit
         // assert account created
     }
