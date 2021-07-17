@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Month;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -14,13 +15,29 @@ public class GloappsRegistrationTest {
     private WebDriver driver;
     private GloappsAuthenticationPage authenticationPage;
     private CreateAccountPage createAccountPage;
+    private GloappsMyAccountPage myAccountPage;
 
     @Test
     public void shouldRegisterUser() {
         // go to registration form
-        authenticationPage.fillEmailForCreateAccount("ola2@makota.pl");
+        final String newEmail = "ola3@makota.pl";
+        authenticationPage.fillEmailForCreateAccount(newEmail);
         authenticationPage.submitCreateAccount();
         assertTrue(createAccountPage.isPersonalInformationFormDisplayed());
+//        assertTrue(createAccountPage.isEmailPopulatedWith(newEmail));
+        PersonalInformationFormData formData = new PersonalInformationFormData()
+                .setMr(true)
+                .setFirstName("ala")
+                .setLastName("novakovsky")
+                .setPassword("ala123")
+                .setDays(12)
+                .setMonths(Month.SEPTEMBER)
+                .setYears(2000)
+                .setNewsletter(true)
+                .setSpecialOffers(false);
+        createAccountPage.fillPersonalInformation(formData);
+        createAccountPage.submit();
+        assertTrue(myAccountPage.isRegistrationSuccess());
         // assert account created
     }
 
@@ -32,10 +49,11 @@ public class GloappsRegistrationTest {
         driver.get("https://qloapps.coderslab.pl/en/login?back=my-account");
         authenticationPage = new GloappsAuthenticationPage(driver);
         createAccountPage = new CreateAccountPage(driver);
+        myAccountPage = new GloappsMyAccountPage(driver);
     }
 
     @After
     public void afterEach() {
-//        driver.close();
+        driver.close();
     }
 }
