@@ -62,7 +62,7 @@ public class GloappsCreateAccountPage {
         setCheckbox(specialOffersCheckbox, formData.isSpecialOffers());
     }
 
-    public void submit() {
+    public void clickRegister() {
         submitButton.click();
     }
 

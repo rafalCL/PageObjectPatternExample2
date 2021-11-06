@@ -26,7 +26,7 @@ public class GloappsRegistrationTest {
         assertTrue(createAccountPage.isPersonalInformationFormDisplayed());
         assertTrue(createAccountPage.isEmailPopulatedWith(randomEmail));
         PersonalInformationFormData formData = new PersonalInformationFormData()
-                .setMr(true)
+                .setMr(false)
                 .setFirstName("ala")
                 .setLastName("novakovsky")
                 .setPassword("ala123")
@@ -36,7 +36,7 @@ public class GloappsRegistrationTest {
                 .setNewsletter(true)
                 .setSpecialOffers(false);
         createAccountPage.fillPersonalInformation(formData);
-        createAccountPage.submit();
+        createAccountPage.clickRegister();
         assertTrue(myAccountPage.isRegistrationSuccess());
     }
 
@@ -45,7 +45,7 @@ public class GloappsRegistrationTest {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-        driver.get("https://qloapps.coderslab.pl/en/login?back=my-account");
+        driver.get("https://hotel-testlab.coderslab.pl/en/login");
         authenticationPage = new GloappsAuthenticationPage(driver);
         createAccountPage = new GloappsCreateAccountPage(driver);
         myAccountPage = new GloappsMyAccountPage(driver);
