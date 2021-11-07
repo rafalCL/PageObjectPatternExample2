@@ -56,13 +56,13 @@ public class GloappsRegistrationSteps {
         assertTrue(createAccountPage.isEmailPopulatedWith(randomEmail));
     }
 
-    @And("Fill valid user data")
-    public void fillValidUserData() {
+    @And("Fill valid user data: {word}, {word}, mr={word}, pwd={word}")
+    public void fillValidUserData(String firstName, String lastName, String isMr, String password) {
         PersonalInformationFormData formData = new PersonalInformationFormData()
-                .setMr(false)
-                .setFirstName("ala")
-                .setLastName("novakovsky")
-                .setPassword("ala123")
+                .setMr(Boolean.valueOf(isMr))
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setPassword(password)
                 .setDays(12)
                 .setMonths(Month.SEPTEMBER)
                 .setYears(2000)

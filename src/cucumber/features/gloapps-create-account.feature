@@ -5,7 +5,7 @@ Feature: Create account
     And Click "Create an account" button
     And Is Personal Information form displayed
     And Is email input populated with previous email
-    And Fill valid user data
+    And Fill valid user data: Aleksandra, Novakowsky, mr=false, pwd=alanovak123
     And Click "Register" button
     Then Confirmed registration success
     And Browser quit
