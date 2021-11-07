@@ -8,6 +8,7 @@ Feature: Create account
     And Fill valid user data: <firstName>, <lastName>, mr=<isMr>, pwd=<password>
     And Click "Register" button
     Then Confirmed registration success
+    And Take screenshot
     And Browser quit
 
     Examples:
