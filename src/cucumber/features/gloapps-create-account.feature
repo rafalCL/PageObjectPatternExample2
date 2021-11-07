@@ -8,3 +8,4 @@ Feature: Create account
     And Fill valid user data
     And Click "Register" button
     Then Confirmed registration success
+    And Browser quit
