@@ -4,9 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.pageobjectpatternonlteaw02.registration.GloappsAuthenticationPage;
@@ -40,12 +37,12 @@ public class GloappsRegistrationSteps {
 
     @When("Valid email provided in \"create account email\" input box")
     public void validEmailProvided() {
-        randomEmail = UUID.randomUUID()+"@mail.pl";
+        randomEmail = UUID.randomUUID() + "@mail.pl";
         authenticationPage.fillEmailForCreateAccount(randomEmail);
     }
 
     @And("Click \"Create an account\" button")
-    public void d(){
+    public void clickCreateAccount() {
         authenticationPage.submitCreateAccount();
     }
 
